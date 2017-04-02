@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from 'react-bootstrap';
-import {ButtonToolbar} from 'react-bootstrap';
-import {Editor, EditorState,RichUtils,convertToRaw, convertFromRaw} from 'draft-js';
+// import {Button} from 'react-bootstrap';
+// import {ButtonToolbar} from 'react-bootstrap';
+import {Editor, EditorState,RichUtils} from 'draft-js';
 import './index.css';
 var INLINE_STYLES = [
   {label: 'Bold', style: 'BOLD'},
@@ -25,6 +25,21 @@ const InlineStyleControls = (props) => {
       )}
     </div>
   );
+};
+function getBlockStyle(block) {
+  switch (block.getType()) {
+    case 'blockquote': return 'RichEditor-blockquote';
+    default: return null;
+  }
+}
+
+const styleMap = {
+  CODE: {
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+    fontSize: 16,
+    padding: 2,
+  },
 };
 const BLOCK_TYPES = [
   {label: 'H1', style: 'header-one'},
@@ -144,8 +159,6 @@ class App extends React.Component {
             spellCheck={true}
           />
         </div>
-
-        {/*<div>{JSON.stringify(convertToRaw(editorState.getCurrentContent()))}</div>*/}
       </div>
       );
   }
@@ -155,19 +168,3 @@ ReactDOM.render(
   <App/>,
   document.getElementById('root')
 );
-
-function getBlockStyle(block) {
-  switch (block.getType()) {
-    case 'blockquote': return 'RichEditor-blockquote';
-    default: return null;
-  }
-}
-
-const styleMap = {
-  CODE: {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
-    fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-    fontSize: 16,
-    padding: 2,
-  },
-};
