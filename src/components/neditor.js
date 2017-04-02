@@ -152,7 +152,7 @@ class Neditor extends React.Component {
             editorState={editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}
-            placeholder="Tell a story..."
+            placeholder="너무너무 어렵다."
             ref="editor"
             spellCheck={true}
           />
