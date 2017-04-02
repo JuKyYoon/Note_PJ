@@ -1,0 +1,16 @@
+.SettingtPage{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.SideMenuSetting{
+    border :1px black !important;
+    width:20%;
+    margin-right: 1%;
+    float :left;
+
+}.settingspace{
+    display: inline-block;
+    width:79%;
+    /*background-color: #2d2470;*/
+}
