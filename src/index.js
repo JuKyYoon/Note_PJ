@@ -114,7 +114,7 @@ class App extends React.Component {
   }
   _toggleInlineStyle(inlineStyle) {this.onChange(RichUtils.toggleInlineStyle(this.state.editorState,inlineStyle));
   }
-  
+
   render() {
     const {editorState} = this.state;
 
@@ -144,7 +144,7 @@ class App extends React.Component {
             spellCheck={true}
           />
         </div>
-        
+
         {/*<div>{JSON.stringify(convertToRaw(editorState.getCurrentContent()))}</div>*/}
       </div>
       );
