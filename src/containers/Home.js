@@ -1,7 +1,9 @@
 import React from 'react';
 import Neditor from '../components/neditor'
 import './Home.css'
-import {Button,ButtonGroup} from 'react-bootstrap';
+import {Button,ButtonGroup,PageHeader} from 'react-bootstrap';
+import {FormGroup,ControlLabel,FormControl,HelpBlock} from 'react-bootstrap';
+
 const Home = () => {
     return (
         <div className="HomePage">
@@ -10,7 +12,7 @@ const Home = () => {
                     <Button>Full width button</Button>
                     <Button>Full width button</Button>
                     <Button>Full width button</Button>
-                    <Button>Full width button</Button>
+                    <Button>Full width button<  /Button>
                     <Button>Full width button</Button>
                     <Button>Full width button</Button>
                     <Button>Full width button</Button>
@@ -19,7 +21,11 @@ const Home = () => {
 
             <div className="editspace">
                 <div className="savebutton">
-                    <Button bsStyle="success">Save</Button>
+                    <PageHeader>
+                        <input type="text" name="name" placeholder="Enter a title"/>
+                        <small>Writer</small>
+                        <Button bsStyle="success">Save</Button>
+                    </PageHeader>
                 </div>
 
                 <Neditor/>
