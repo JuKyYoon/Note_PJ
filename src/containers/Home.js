@@ -1,14 +1,20 @@
 import React from 'react';
-import BigText from '../components/BigText';
 import Neditor from '../components/neditor'
+import './Home.css'
 
-const Home = () => {
-    return (
-        <div>
-            <Neditor/>
-        </div>
+class Home extends React.Component {
+    render() {
+        return (
+            <body className="HomePage">
+                <div className="SideMenu">
+                    
+                </div>
+                <div className="editspace">
+                    <Neditor/>
+                </div>
+            </body>
 
-    );
-};
-
+        );
+    }
+}
 export default Home;
