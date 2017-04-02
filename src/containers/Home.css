@@ -10,9 +10,7 @@
     width : 80%;
 
 }
-.savebutton{
 
-}
 .SideMenu{
     display: inline-block;
     width:19%;
@@ -20,4 +18,28 @@
     height:600px;
     border : 1px solid red;
     /*background-color: #a1c918;*/
+}
+
+.inputtitle{
+
+}
+
+.writer{
+    margin-left: 10px;
+}
+
+.savebuttonspace{
+    float:right;
+    margin-right:20px;
+}
+.home_search{
+    margin-top: 10px;
+}
+.home_input_search{
+    width:80%;
+    float:left;
+}
+.homesearchsubmit{
+    width:20%;
+    margin-top:4px;
 }
