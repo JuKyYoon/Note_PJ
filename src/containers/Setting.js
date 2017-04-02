@@ -27,6 +27,7 @@ class Example extends React.Component {
     );
   }
 }
+
 const Setting = () => {
     return (
         <div className="SettingPage">
