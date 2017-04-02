@@ -1,6 +1,5 @@
 import React from 'react';
-import BigText from '../components/BigText';
-import PostLinks from '../components/PostLinks';
+import PostLinks from '../components/Memos';
 import './View.css'
 const View = ({children}) => {
     return (

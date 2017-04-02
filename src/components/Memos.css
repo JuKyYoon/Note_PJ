@@ -1,7 +1,7 @@
-.post-links a {
+.memos a {
     display: block;
     text-align: center;
-    
+
     text-decoration: none;
     background-color: #495057;
     color: white;
@@ -12,11 +12,11 @@
     transition: background .3s;
 }
 
-.post-links a:hover {
+.memos a:hover {
     background-color: #868e96;
 }
 
-.post-links a:active {
+.memos a:active {
     background-color: #343a40;
 }
 

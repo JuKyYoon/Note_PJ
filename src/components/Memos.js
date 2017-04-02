@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-import './PostLinks.css';
+import './Memos.css';
 
-const PostLinks = () => {
+const Memos = () => {
     return (
-        <div className="post-links">
+        <div className="memos">
             <Link to="/post/1">1</Link>
             <Link to="/post/2">2</Link>
             <Link to="/post/3">3</Link>
@@ -14,4 +14,4 @@ const PostLinks = () => {
 
 };
 
-export default PostLinks;
+export default Memos;

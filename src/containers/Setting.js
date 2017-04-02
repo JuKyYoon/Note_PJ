@@ -1,10 +1,9 @@
 import React from 'react';
-import BigText from '../components/BigText';
 
 const Setting = () => {
     return (
         <div>
-           <BigText>set</BigText>
+           <h1>setting</h1>
         </div>
     );
 };
