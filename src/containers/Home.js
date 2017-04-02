@@ -1,20 +1,33 @@
 import React from 'react';
 import Neditor from '../components/neditor'
 import './Home.css'
+import {Button,ButtonGroup} from 'react-bootstrap';
+const Home = () => {
+    return (
+        <div className="HomePage">
+            <div className="SideMenu">
+                <ButtonGroup vertical block>
+                    <Button>Full width button</Button>
+                    <Button>Full width button</Button>
+                    <Button>Full width button</Button>
+                    <Button>Full width button</Button>
+                    <Button>Full width button</Button>
+                    <Button>Full width button</Button>
+                    <Button>Full width button</Button>
+                </ButtonGroup>
+            </div>
 
-class Home extends React.Component {
-    render() {
-        return (
-            <body className="HomePage">
-                <div className="SideMenu">
-                    
+            <div className="editspace">
+                <div className="savebutton">
+                    <Button bsStyle="success">Save</Button>
                 </div>
-                <div className="editspace">
-                    <Neditor/>
-                </div>
-            </body>
 
-        );
-    }
-}
+                <Neditor/>
+            </div>
+        </div>
+
+
+    );
+};
+
 export default Home;
