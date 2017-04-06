@@ -12,6 +12,5 @@ const Memos = () => {
         </div>
     );
 
-};
-
+};  
 export default Memos;

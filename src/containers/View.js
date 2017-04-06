@@ -1,54 +1,72 @@
 import React from 'react';
 import PostLinks from '../components/Memos';
-import {Table}  from 'react-bootstrap';
+import {Table,Button}  from 'react-bootstrap';
+import {Link} from 'react-router';
+import {ListGroupItem, ListGroup} from 'react-bootstrap';
 import './View.css'
 
+const MenuItem = ({active, children, to}) => (
+    <Link to={to} className={`menu-itemview ${active ? 'active': ''}`}>
+            {children}
+    </Link>
+);
 const View = ({children}) => {
     return (
         <div className="viewpage">
-            <Table responsive>
+            <Table responsive className="memotable">
                 <thead>
+                  
                   <tr>
-                    <th>#</th>
-                    <th>이름</th>
-                    <th>작성자</th>
-                    <th>수정한 날짜</th>
-                    <th>크기</th>
-                    <th>Table heading</th>
-                    <th>Table heading</th>
+                        <MenuItem to={'/view'}>
+                        <td>#</td>
+                        <td>이름</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        </MenuItem>
                   </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                          <MenuItem to={'/view'}>
+                          <td>1</td>
+                          <td>Table cell</td>
+                          <td>Table cell</td>
+                          <td>Table cell</td>
+                          <td>Table cell</td>
+                          <td>Table cell</td>
+                          <td>Table cell</td>
+                          </MenuItem>
+                    </tr>
+                     <tr>
+                           <MenuItem to={'/view'}>
+                           <td>2</td>
+                           <td>Table cell</td>
+                           <td>Table cell</td>
+                           <td>Table cell</td>
+                           <td>Table cell</td>
+                           <td>Table cell</td>
+                           <td>Table cell</td>
+                           </MenuItem>
+                     </tr>
                   <tr>
-                    <td>1</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
+                        <MenuItem to={'/view'}>
+                        <td>3</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        </MenuItem>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                  </tr>
+
                 </tbody>
               </Table>
 
+              <MenuItem to={'/view'}>HOME</MenuItem>
         </div>
 
     );
