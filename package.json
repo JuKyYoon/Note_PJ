@@ -5,6 +5,8 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "draft-js": "^0.10.0",
+    "draft-js-export-html": "^0.5.2",
+    "express": "^4.15.2",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-burger-menu": "^1.10.14",

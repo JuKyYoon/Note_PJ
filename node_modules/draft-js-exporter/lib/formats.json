@@ -1,0 +1,20 @@
+{
+  "HTML": {
+    "BLOCK": {
+      "unstyled": {
+        "open": "<p>",
+        "close": "</p>"
+      }
+    },
+    "INLINE": {
+      "BOLD": {
+        "open": "<strong>",
+        "close": "</strong>"
+      },
+      "ITALIC": {
+        "open": "<em>",
+        "close": "</em>"
+      }
+    }
+  }
+}

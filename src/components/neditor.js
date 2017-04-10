@@ -128,6 +128,7 @@ class Neditor extends React.Component {
   _toggleInlineStyle(inlineStyle) {this.onChange(RichUtils.toggleInlineStyle(this.state.editorState,inlineStyle));
   }
 
+
   render() {
     const {editorState} = this.state;
 
