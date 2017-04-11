@@ -4,70 +4,48 @@ import {Table,Button}  from 'react-bootstrap';
 import {Link} from 'react-router';
 import {ListGroupItem, ListGroup} from 'react-bootstrap';
 import './View.css'
+class Layout extends React.Component {
+  render() {
+    return (
+      <html>
+        <head>
+          <title>{this.props.title}</title>
+          <link rel="stylesheet" href="/stylesheets/style.css" />
+          <script dangerouslySetInnerHTML={{__html:`
+            // This is making use of ES6 template strings, which allow for
+            // multiline strings. We specified "{jsx: {harmony: true}}" when
+            // creating the engine in app.js to get this feature.
+            console.log("hello world");
+          `}}/>
+        </head>
+        <body>
+          {this.props.children}
+        </body>
+      </html>
+    );
+  }
+}
 
+Layout.propTypes = {
+  title: React.PropTypes.string
+};
 const MenuItem = ({active, children, to}) => (
     <Link to={to} className={`menu-itemview ${active ? 'active': ''}`}>
             {children}
     </Link>
 );
+
 const View = ({children}) => {
     return (
-        <div className="viewpage">
-            <Table responsive className="memotable">
-                <thead>
-                  
-                  <tr>
-                        <MenuItem to={'/view'}>
-                        <td>#</td>
-                        <td>이름</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        </MenuItem>
-                  </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                          <MenuItem to={'/view'}>
-                          <td>1</td>
-                          <td>Table cell</td>
-                          <td>Table cell</td>
-                          <td>Table cell</td>
-                          <td>Table cell</td>
-                          <td>Table cell</td>
-                          <td>Table cell</td>
-                          </MenuItem>
-                    </tr>
-                     <tr>
-                           <MenuItem to={'/view'}>
-                           <td>2</td>
-                           <td>Table cell</td>
-                           <td>Table cell</td>
-                           <td>Table cell</td>
-                           <td>Table cell</td>
-                           <td>Table cell</td>
-                           <td>Table cell</td>
-                           </MenuItem>
-                     </tr>
-                  <tr>
-                        <MenuItem to={'/view'}>
-                        <td>3</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        </MenuItem>
-                  </tr>
+        <Layout title={this.props.title}>
+            <div className="viewpage">
+                <h1>{this.props.title}</h1>
+                <p>Welcome to {this.props.title}</p>
 
-                </tbody>
-              </Table>
+                  <MenuItem to={'/view'}>HOME</MenuItem>
+            </div>
+      </Layout>
 
-              <MenuItem to={'/view'}>HOME</MenuItem>
-        </div>
 
     );
 };

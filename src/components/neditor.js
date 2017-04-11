@@ -1,6 +1,9 @@
 import React from 'react';
-import {Editor, EditorState,RichUtils} from 'draft-js';
+import sample from '../sample';
+import {Button  } from 'react-bootstrap';
+import {Editor, EditorState,RichUtils,convertToRaw, rawDraftContertBlock, convertFromRaw,createEditorState,Draft,contentState,rawDraftContentBlock} from 'draft-js';
 import './neditor.css';
+var $ = require("jquery");
 
 var INLINE_STYLES = [
   {label: 'Bold', style: 'BOLD'},
@@ -8,6 +11,9 @@ var INLINE_STYLES = [
   {label: 'Underline', style: 'UNDERLINE'},
   {label: 'Monospace', style: 'CODE'},
 ];
+
+
+
 const InlineStyleControls = (props) => {
   var currentStyle = props.editorState.getCurrentInlineStyle();
   return (
@@ -24,6 +30,8 @@ const InlineStyleControls = (props) => {
     </div>
   );
 };
+
+
 function getBlockStyle(block) {
   switch (block.getType()) {
     case 'blockquote': return 'RichEditor-blockquote';
@@ -39,6 +47,8 @@ const styleMap = {
     padding: 2,
   },
 };
+
+
 const BLOCK_TYPES = [
   {label: 'H1', style: 'header-one'},
   {label: 'H2', style: 'header-two'},
@@ -51,6 +61,8 @@ const BLOCK_TYPES = [
   {label: 'OL', style: 'ordered-list-item'},
   {label: 'Code Block', style: 'code-block'},
 ];
+
+
 class StyleButton extends React.Component {
   constructor() {
     super();
@@ -70,6 +82,8 @@ class StyleButton extends React.Component {
     );
   }
 }
+
+
 const BlockStyleControls = (props) => {
   const {editorState} = props;
   const selection = editorState.getSelection();
@@ -92,17 +106,33 @@ const BlockStyleControls = (props) => {
   );
 };
 
+
+
 class Neditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {editorState: EditorState.createEmpty()};
+
     this.focus = () => this.refs.editor.focus();
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.onChange = (editorState) => this.setState({editorState});
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+
+
+    this.onSave = () => {
+     var content = this.state.editorState.getCurrentContent();
+     var raw = convertToRaw(content);
+     $.post('/add', {title:' ' , body: raw}, () => {
+       alert('Saved');
+     });
+   };
   }
+
+
+
+
   handleKeyCommand(command) {
     const newState = RichUtils.handleKeyCommand(this.state.editorState, command);
     if (newState) {
@@ -111,6 +141,7 @@ class Neditor extends React.Component {
     }
     return 'not-handled';
   }
+
 
    _onBoldClick() {
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
@@ -130,22 +161,26 @@ class Neditor extends React.Component {
 
 
   render() {
-    const {editorState} = this.state;
+      const {editorState} = this.state;
 
-    // If the user changes block type before entering any text, we can
-    // either style the placeholder or hide it. Let's just hide it now.
-    let className = 'RichEditor-editor';
-    var contentState = editorState.getCurrentContent();
-    if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' RichEditor-hidePlaceholder';
-      }
-    }
+          // If the user changes block type before entering any text, we can
+          // either style the placeholder or hide it. Let's just hide it now.
+          let className = 'RichEditor-editor';
+          var contentState = editorState.getCurrentContent();
+          if (!contentState.hasText()) {
+            if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+              className += ' RichEditor-hidePlaceholder';
+            }
+          }
 
     return (
-      <div className="RichEditor-root">
+        <div className="RichEditor-root">
+
         <BlockStyleControls editorState={editorState} onToggle={this.toggleBlockType}/>
         <InlineStyleControls editorState={editorState} onToggle={this.toggleInlineStyle}/>
+
+        <button onClick={this.onSave}>Save</button>
+
         <div className={className} onClick={this.focus}>
           <Editor
             blockStyleFn={getBlockStyle}
@@ -153,7 +188,7 @@ class Neditor extends React.Component {
             editorState={editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}
-            placeholder="너무너무 어렵다."
+            placeholder="vert difficult"
             ref="editor"
             spellCheck={true}
           />
