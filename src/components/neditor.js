@@ -122,8 +122,11 @@ class Neditor extends React.Component {
     this.onSave = () => {
      var content = this.state.editorState.getCurrentContent();
      var raw = convertToRaw(content);
-     $.post('/view', {title:' ' , body: raw}, () => {
+     $.post('/view', {body: raw.toString()}, () => {
+         console.log("staaaaaaaaaaaaay");
+         console.dir(raw.toString());
        alert('Saved');
+    //    alert(typeof raw);
      });
    };
   }
@@ -181,7 +184,7 @@ class Neditor extends React.Component {
           <Editor
             blockStyleFn={getBlockStyle}
             customStyleMap={styleMap}
-            editorState={editorState}
+            editorState={this.state.editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}
             placeholder="vert difficult"

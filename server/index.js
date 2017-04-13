@@ -18,7 +18,7 @@ var connection = mongoose.connection;
 autoIncrement.initialize(connection)
 
 var Schema = mongoose.Schema;
-
+var ObjectId = mongoose.Schema.Types.ObjectId;
 var MemoSchema = new Schema({
     body      : String,
     date      : {type: Date, default:Date.now}
@@ -45,7 +45,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/view', (req, res) => {
     var newMemo = new Memo();
-    newMemo.title = req.body.title;
+    // newMemo.title = req.body.title;
+    // console.log(req.body.title);
+    console.log(req.body.body);
     newMemo.body = req.body.body;
     newMemo.save((err) => {
       if(err) console.log(err);
