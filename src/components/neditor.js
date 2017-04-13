@@ -1,5 +1,4 @@
 import React from 'react';
-import sample from '../sample';
 import {Button  } from 'react-bootstrap';
 import {Editor, EditorState,RichUtils,convertToRaw, rawDraftContertBlock, convertFromRaw,createEditorState,Draft,contentState,rawDraftContentBlock} from 'draft-js';
 import './neditor.css';
@@ -120,11 +119,10 @@ class Neditor extends React.Component {
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 
-
     this.onSave = () => {
      var content = this.state.editorState.getCurrentContent();
      var raw = convertToRaw(content);
-     $.post('/add', {title:' ' , body: raw}, () => {
+     $.post('/view', {title:' ' , body: raw}, () => {
        alert('Saved');
      });
    };
@@ -178,9 +176,7 @@ class Neditor extends React.Component {
 
         <BlockStyleControls editorState={editorState} onToggle={this.toggleBlockType}/>
         <InlineStyleControls editorState={editorState} onToggle={this.toggleInlineStyle}/>
-
         <button onClick={this.onSave}>Save</button>
-
         <div className={className} onClick={this.focus}>
           <Editor
             blockStyleFn={getBlockStyle}

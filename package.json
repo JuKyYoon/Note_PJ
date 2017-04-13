@@ -1,6 +1,6 @@
 {
   "name": "noote",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -10,6 +10,7 @@
     "draft-js-ast-exporter": "^1.0.0",
     "draft-js-export-html": "^0.5.2",
     "express": "^4.15.2",
+    "express-react-views": "^0.10.2",
     "mongoose": "^4.9.4",
     "mongoose-auto-increment": "^5.0.1",
     "pug": "^2.0.0-beta11",

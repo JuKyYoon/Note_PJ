@@ -28,15 +28,7 @@ const Home = () => {
             </div>
 
             <div className="editspace">
-                <div className="inputtitle">
-                    <PageHeader>
-                        <input type="text" name="name" placeholder="Enter a title"/>
-                        <small className="writer">Writer</small>
-                        <div className="savebuttonspace">
-                            <Button bsStyle="success">Save</Button>
-                        </div>
-                    </PageHeader>
-                </div>
+                
 
                 <Neditor/>
             </div>
