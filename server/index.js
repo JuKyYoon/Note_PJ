@@ -18,30 +18,30 @@ var connection = mongoose.connection;
 autoIncrement.initialize(connection)
 
 var Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+// var ObjectId = mongoose.Schema.Types.ObjectId;
 var MemoSchema = new Schema({
     body      : String,
     date      : {type: Date, default:Date.now}
 });
 
-MemoSchema.plugin(autoIncrement.plugin, 'Memo');
+MemoSchema.plugin(autoIncrement.plugin, '   Memo');
 var Memo = mongoose.model('Memo', MemoSchema);
 
-// app.set('views', __dirname + 'src/containers/');
-// app.set('view engine', 'jsx');
-// app.engine('jsx', require('express-react-views').createEngine());
+app.set('views', __dirname + 'src/containers/');
+app.set('view engine', 'js');
+app.engine('js', require('express-react-views').createEngine());
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// app.get('/', (req, res) => {
-//     Memo.find((err, docs) => {
-//         // res.render('main',{memos: docs});
-//     });
-// });
-//
-// app.get('/view', (req, res) => {
-//     // res.render('add');
-// });
+app.get('/', (req, res) => {
+    Memo.find((err, docs) => {
+        res.render('main',{memos: docs});
+    });
+});
+
+app.get('/view', (req, res) => {
+    res.render('add');
+});
 
 app.post('/view', (req, res) => {
     var newMemo = new Memo();
@@ -55,11 +55,11 @@ app.post('/view', (req, res) => {
     });
 });
 //
-// app.get('/:id', (req, res) => {
-//     Memo.findOne({'_id': req.params.id}, (err, doc) => {
-//         // res.render('view', {memo: doc});
-//     });
-// });
+app.get('/:id', (req, res) => {
+    Memo.findOne({'_id': req.params.id}, (err, doc) => {
+        res.render('view', {memo: doc});
+    });
+});
 //
 // app.get('/:id/delete', (req, res) => {
 //     Memo.remove({'_id': req.params.id}, (err, output) => {
