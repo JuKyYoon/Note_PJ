@@ -118,10 +118,7 @@ class Neditor extends React.Component {
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-    
-    this.onLoad = () => {
-        Draft.convertFromRaw(JSON.parse(content))
-    }
+
 
     this.onSave = () => {
      var content = this.state.editorState.getCurrentContent();

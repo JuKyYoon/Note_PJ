@@ -7,7 +7,12 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser'); //JSON형태로 변환
 var autoIncrement = require("mongoose-auto-increment");
 var app = express();
-
+var db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', function(){
+    // CONNECTED TO MONGODB SERVER
+    console.log("Connected to mongod server");
+});
 
 
 mongoose.Promise = global.Promise;
@@ -27,21 +32,24 @@ var MemoSchema = new Schema({
 MemoSchema.plugin(autoIncrement.plugin, '   Memo');
 var Memo = mongoose.model('Memo', MemoSchema);
 
-app.set('views', __dirname + 'src/containers/');
-app.set('view engine', 'js');
-app.engine('js', require('express-react-views').createEngine());
+app.get('/view', function(req,res){
+    Memo.find(function(err, memos){
+        if(err) {return res.status(500).send({error: 'database failure'});}
+        res.json(memos);
+    })
+});
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
-    Memo.find((err, docs) => {
-        res.render('main',{memos: docs});
-    });
-});
+// app.get('/', (req, res) => {
+    // Memo.find((err, docs) => {
+        // res.render('main',{memos: docs});
+    // });
+// });
 
-app.get('/view', (req, res) => {
-    res.render('add');
-});
+// app.get('/view', (req, res) => {
+    // res.render('view');
+// });
 
 app.post('/view', (req, res) => {
     var newMemo = new Memo();
@@ -55,11 +63,11 @@ app.post('/view', (req, res) => {
     });
 });
 //
-app.get('/:id', (req, res) => {
-    Memo.findOne({'_id': req.params.id}, (err, doc) => {
-        res.render('view', {memo: doc});
-    });
-});
+// app.get('/:id', (req, res) => {
+    // Memo.findOne({'_id': req.params.id}, (err, doc) => {
+        //  res.render('view', {memo: doc});
+    // });
+// });
 //
 // app.get('/:id/delete', (req, res) => {
 //     Memo.remove({'_id': req.params.id}, (err, output) => {
@@ -92,6 +100,7 @@ app.get('/:id', (req, res) => {
 //기본 설정 파일
 app.use('/', express.static(path.resolve(__dirname, '../build')));
 
+//static경로를 예외로 처리하고 리액트 index.html을 보여준다.
 app.get('*', (req, res, next) => {
     if(req.path.split('/')[1] === 'static') return next();
     res.sendFile(path.resolve(__dirname, '../build/index.html'));

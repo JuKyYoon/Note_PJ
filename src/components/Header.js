@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import './Header.css';
-
+function movepage(){
+    location.href = "/view"
+}
 const MenuItem = ({active, children, to}) => (
     <Link to={to} className={`menu-item ${active ? 'active': ''}`}>
             {children}
