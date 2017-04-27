@@ -32,12 +32,18 @@ var MemoSchema = new Schema({
 MemoSchema.plugin(autoIncrement.plugin, '   Memo');
 var Memo = mongoose.model('Memo', MemoSchema);
 
-app.get('/view', function(req,res){
+app.post('/view', function(req,res){
     Memo.find(function(err, memos){
         if(err) {return res.status(500).send({error: 'database failure'});}
         res.json(memos);
     })
 });
+
+// app.get('/account', function (req, res) {
+//   res.send('qqqqqqqqq');
+// });
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -51,7 +57,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
     // res.render('view');
 // });
 
-app.post('/view', (req, res) => {
+app.post('/view2', (req, res) => {
     var newMemo = new Memo();
     // newMemo.title = req.body.title;
     // console.log(req.body.title);
