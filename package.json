@@ -1,6 +1,7 @@
 {
   "name": "noote",
   "version": "0.1.1",
+  "main" : "main.js",
   "private": true,
   "dependencies": {
     "babel-polyfill": "^6.23.0",
