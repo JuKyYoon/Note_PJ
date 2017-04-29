@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Home from './containers/Home';
 import View from './containers/View';
-import List from './containers/List';
 import Account from './containers/Account';
 import Setting from './containers/Setting';
 
@@ -18,9 +17,8 @@ ReactDOM.render(
       <IndexRoute component={Home}/>
       <Route path="account" component={Account}/>
       <Route path="setting" component={Setting}/>
-      <Route path="view" component={View}>
-        <Route path=":id" component={List}/>
-      </Route>
+      <Route path="view" component={View}/>
+      
     </Route>
   </Router>,
   document.getElementById('root')

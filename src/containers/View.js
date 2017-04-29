@@ -1,10 +1,10 @@
 import React from 'react';
-import PostLinks from '../components/Memos';
 import {Table,Button}  from 'react-bootstrap';
 import {Link} from 'react-router';
 import {ListGroupItem, ListGroup} from 'react-bootstrap';
 import './View.css'
-import Viewmemo from '../components/viewmemo'
+
+
 
 var $ = require('jquery');
 
@@ -26,13 +26,12 @@ class Viewnote extends React.Component{
     }
         
     render(){
-
         if(this.props.memos != null){
             return(
                 <div>
                     <ul>
                         {this.props.memos.map((memo) => {
-                            return (<Memo body={memo.body} />);
+                            return (<Memo body={memo.date} />);
                         })}
                     </ul>
                 </div>
@@ -40,19 +39,16 @@ class Viewnote extends React.Component{
             
         }
         else{
-            return(<div>암것도 없어요 ㅠㅠ</div>);
-            
+            return(<div>암것도 없어요 ㅠㅠ</div>);  
         } 
     }
 }
 
 class Memo extends React.Component{
     render(){
-        console.log('inMemo : ', this.props.body);
         return(
             <div>
-                <li>{this.props.body}</li>
-                
+                <td>{this.props.body}</td>    
             </div>
         );
     }
@@ -69,6 +65,7 @@ const View = ({children}) => {
         </div>
     );
 };
+
 
 
 export default View;

@@ -124,7 +124,7 @@ class Neditor extends React.Component {
      var content = this.state.editorState.getCurrentContent();
      var raw = convertToRaw(content);
      raw = JSON.stringify(raw);
-     $.post('/view', {body: raw}, () => {
+     $.post('/', {body: raw}, () => {
          console.log("staaaaaaaaaaaaay");
          console.dir(raw);
        alert('Saved');
