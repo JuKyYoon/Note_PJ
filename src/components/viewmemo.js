@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button  } from 'react-bootstrap';
 import {Editor, EditorState,RichUtils,convertToRaw, rawDraftContertBlock, convertFromRaw,createEditorState,Draft,contentState,rawDraftContentBlock} from 'draft-js';
-import './viewmemo.css';
-
+import './neditor.css';
+var $ = require("jquery");
 
 var INLINE_STYLES = [
   {label: 'Bold', style: 'BOLD'},
@@ -110,20 +110,18 @@ const BlockStyleControls = (props) => {
 class Viewmemo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-
-    this.focus = () => this.refs.editor.focus();
+    this.props.load = JSON.parse(this.props.load);
+    this.state = {editorState: EditorState.createWithContent(convertFromRaw(this.props.load))};
+    // this.state = {editorState: EditorState.createEmpty()};
+    
     this.handleKeyCommand = this.handleKeyCommand.bind(this);
     this.onChange = (editorState) => this.setState({editorState});
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-    this.onload = () => {
-        // var content =
-        // var editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(content)));
-    }
-   };
 
+   
+  }
 
 
 
@@ -170,16 +168,15 @@ class Viewmemo extends React.Component {
 
     return (
         <div className="RichEditor-root">
-        <div className={className} onClick={this.focus}>
-         <button onClick={this.onload}>Save</button>
+
+        <div className={className}>
           <Editor
             blockStyleFn={getBlockStyle}
             customStyleMap={styleMap}
-            editorState={this.state.editorState}
+            editorState={this.state.editorState} readOnly 
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}
-            placeholder="vert difficult"
-            ref="editor"
+            
             spellCheck={true}
           />
         </div>

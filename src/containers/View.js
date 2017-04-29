@@ -2,8 +2,8 @@ import React from 'react';
 import {Table,Button}  from 'react-bootstrap';
 import {Link} from 'react-router';
 import {ListGroupItem, ListGroup} from 'react-bootstrap';
-import './View.css'
-
+import './View.css';
+import Viewmemo from '../components/Viewmemo';
 
 
 var $ = require('jquery');
@@ -31,7 +31,7 @@ class Viewnote extends React.Component{
                 <div>
                     <ul>
                         {this.props.memos.map((memo) => {
-                            return (<Memo body={memo.date} />);
+                            return (<Viewmemo load={memo.body} />);
                         })}
                     </ul>
                 </div>
