@@ -6,7 +6,9 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser'); //JSON형태로 변환
 var autoIncrement = require("mongoose-auto-increment");
+var router = express.Router();
 var app = express();
+
 var db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', function(){
@@ -23,7 +25,7 @@ var connection = mongoose.connection;
 autoIncrement.initialize(connection)
 
 var Schema = mongoose.Schema;
-// var ObjectId = mongoose.Schema.Types.ObjectId;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 var MemoSchema = new Schema({
     body      : String,
     date      : {type: Date, default:Date.now}
@@ -45,7 +47,7 @@ app.post('/view', function(req,res){
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.urlencoded({ extended: false }))
 
 // app.get('/', (req, res) => {
     // Memo.find((err, docs) => {
@@ -57,7 +59,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
     // res.render('view');
 // });
 
-app.post('/view2', (req, res) => {
+app.post('/view', (req, res) => {
     var newMemo = new Memo();
     // newMemo.title = req.body.title;
     // console.log(req.body.title);
@@ -115,3 +117,4 @@ app.get('*', (req, res, next) => {
 app.listen(4000, function () {
   console.log('AAAAAAAAAAAAAAAAAAAA');
 });
+

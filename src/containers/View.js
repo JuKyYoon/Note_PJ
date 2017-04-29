@@ -8,44 +8,63 @@ import Viewmemo from '../components/viewmemo'
 
 var $ = require('jquery');
 
+class Viewnote extends React.Component{
+    constructor(props) {
+        super(props);
+        $.ajax({
+            url : '/view',
+            method : "post",
+            async: false,
+            success : (data) => {
+                this.props.memos = data;
+                console.log('success --> data :', this.props.memos);
+                //[Object, Object]
+                console.log(typeof(data)); 
+                // = object
+           }
+        });
+    }
+        
+    render(){
+
+        if(this.props.memos != null){
+            return(
+                <div>
+                    <ul>
+                        {this.props.memos.map((memo) => {
+                            return (<Memo body={memo.body} />);
+                        })}
+                    </ul>
+                </div>
+            );
+            
+        }
+        else{
+            return(<div>암것도 없어요 ㅠㅠ</div>);
+            
+        } 
+    }
+}
+
 class Memo extends React.Component{
     render(){
+        console.log('inMemo : ', this.props.body);
         return(
             <div>
-                {this.props.body}
-                <a>heaaaaaaaaaaa</a>
+                <li>{this.props.body}</li>
+                
             </div>
         );
     }
 }
-class viewnote extends React.Component{
-    constructor(){
-        super();
-        var url = '/view';
-        $.ajax(url,{
-            method : "post",
-            success : (data) => {
-                this.props.memos = data;
-            }
-        });
-    }
-    render(){
-        this.props.memos.each((memo, index) => {
-            return(
-                <div>
-                <a>daf</a>
-                <Memo body={memo.body}/>
-                </div>
-            );
-        })
-    }
-}
+
+
 
 const View = ({children}) => {
     return (
         <div className="viewpage">
             <h1>hello</h1>
-            <viewnote/>
+            <Viewnote/>
             <h2>goodbye</h2>
         </div>
     );
@@ -53,3 +72,4 @@ const View = ({children}) => {
 
 
 export default View;
+
