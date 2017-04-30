@@ -20,7 +20,7 @@ const Header = (props, context) => {
             </div>
             <div className="menu">
                 <MenuItem to={'/'} active={router.isActive('/', true)}>HOME</MenuItem>
-                <MenuItem to={'/account'} active={router.isActive('/account')}>Account</MenuItem>
+                <MenuItem to={'/search'} active={router.isActive('/search')}>Search</MenuItem>
                 <MenuItem to={'/view'} active={router.isActive('/view')}>View</MenuItem>
                 <MenuItem to={'/setting'} active={router.isActive('/setting')}>Setting</MenuItem>
                 <MenuItem to={'/'} active={router.isActive('/exit')}>Exit</MenuItem>

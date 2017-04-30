@@ -53,7 +53,12 @@ app.post('/', (req, res) => {
 });
 
 
-
+app.delete('/delete', (req, res) => {
+    Memo.remove({'_id': req.params.id}, (err, output) => {
+        if(err) return res.status(500).json({ error: "database failure" });
+        res.redirect('/');
+    });
+});
 
 
 //기본 설정 파일

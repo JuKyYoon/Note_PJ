@@ -120,6 +120,30 @@ class Viewmemo extends React.Component {
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
 
+    this.onDelete = () => {
+      $.ajax({
+            url : '/delete',
+            type : 'DELETE',
+            async: false,
+            _id : this.props.load.id,
+            success : (response) => {
+                if ( response === 'error' ) {
+                   alert('crap!');
+
+               } else if (response === 'success' ) {
+
+                   alert('worked fine!');
+
+               }
+           }
+        });
+    }
+
+    this.onUpdate = () => {
+
+    }
+     
+     
    
   }
 
@@ -168,7 +192,8 @@ class Viewmemo extends React.Component {
 
     return (
         <div className="RichEditor-root">
-
+        <button onClick={this.onDelete}>Delete</button>
+        <button onClick={this.onUpdate}>Update</button>
         <div className={className}>
           <Editor
             blockStyleFn={getBlockStyle}

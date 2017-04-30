@@ -17,9 +17,9 @@ class Viewnote extends React.Component{
             async: false,
             success : (data) => {
                 this.props.memos = data;
-                console.log('success --> data :', this.props.memos);
+                // console.log('success --> data :', this.props.memos);
                 //[Object, Object]
-                console.log(typeof(data)); 
+                // console.log(typeof(data)); 
                 // = object
            }
         });

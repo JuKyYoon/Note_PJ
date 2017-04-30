@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Home from './containers/Home';
 import View from './containers/View';
-import Account from './containers/Account';
+import Search from './containers/Search';
 import Setting from './containers/Setting';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -15,7 +15,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="account" component={Account}/>
+      <Route path="search" component={Search}/>
       <Route path="setting" component={Setting}/>
       <Route path="view" component={View}/>
       
