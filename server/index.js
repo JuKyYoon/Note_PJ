@@ -65,7 +65,8 @@ app.post('/', (req, res) => {
 });
 
 
-app.delete('/delete', (req, res) => {
+app.post('/:id/delete', (req, res) => {
+    console.log('#######################');
     Memo.remove({'_id': req.params.id}, (err, output) => {
         if(err) return res.status(500).json({ error: "database failure" });
         res.redirect('/');

@@ -122,10 +122,9 @@ class Viewmemo extends React.Component {
 
     this.onDelete = () => {
       $.ajax({
-            url : '/delete',
-            type : 'DELETE',
+            url : this.props.id + '/delete',
+            type : 'POST',
             async: false,
-            _id : this.props.load.id,
             success : (response) => {
                 if ( response === 'error' ) {
                    alert('crap!');
@@ -137,11 +136,9 @@ class Viewmemo extends React.Component {
                }
            }
         });
+      location.reload(); 
     }
 
-    this.onUpdate = () => {
-
-    }
      
      
    

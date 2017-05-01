@@ -25,7 +25,7 @@ class Viewnote extends React.Component{
                             // console.log(memojson.blocks[0].text, 'vs' ,this.props.key);
                             // console.log('index value : ',memojson.blocks[0].text.indexOf(this.props.keyvalue));
                             if(memojson.blocks[0].text.indexOf(this.props.keyvalue) != -1){
-                              return (<Viewmemo load={memo.body} date={memo.date}/>);
+                              return (<Viewmemo load={memo.body} date={memo.date} id = {memo._id}/>);
                             }
 
                         })}

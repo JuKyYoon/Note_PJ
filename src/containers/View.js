@@ -31,7 +31,7 @@ class Viewnote extends React.Component{
                 <div>
                     <ul>
                         {this.props.memos.map((memo) => {
-                            return (<Viewmemo load={memo.body} date={memo.date}/>);
+                            return (<Viewmemo load={memo.body} date={memo.date} id = {memo._id}/>);
                         })}
                     </ul>
                 </div>
