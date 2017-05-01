@@ -1,45 +1,12 @@
 .HomePage{
     margin-left: 30px;
     margin-right:30px;
+    margin-top : 100px;
     /*text-align: center;*/
 }
 
 .editspace{
     /*display: inline-block;*/
-    float:right;
-    width : 80%;
-
-}
-
-.SideMenu{
-    display: inline-block;
-    width:19%;
-    margin-right: 1%;
-    height:600px;
-    border : 1px solid red;
-    /*background-color: #a1c918;*/
-}
-
-.inputtitle{
-
-}
-
-.writer{
-    margin-left: 10px;
-}
-
-.savebuttonspace{
-    float:right;
-    margin-right:20px;
-}
-.home_search{
-    margin-top: 10px;
-}
-.home_input_search{
-    width:80%;
-    float:left;
-}
-.homesearchsubmit{
-    width:20%;
-    margin-top:4px;
+   
+    
 }

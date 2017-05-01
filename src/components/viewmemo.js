@@ -2,6 +2,8 @@ import React from 'react';
 import {Button  } from 'react-bootstrap';
 import {Editor, EditorState,RichUtils,convertToRaw, rawDraftContertBlock, convertFromRaw,createEditorState,Draft,contentState,rawDraftContentBlock} from 'draft-js';
 import './neditor.css';
+var Router = require('react-router');
+var Link = Router.Link;
 var $ = require("jquery");
 
 var INLINE_STYLES = [
@@ -139,6 +141,12 @@ class Viewmemo extends React.Component {
       location.reload(); 
     }
 
+    this.onUpdate = () => {
+      window.location.href = "/update?id=" + this.props.id;
+
+      //보내야 할 거 this.state.editorstate  : 에디터 스테이트 이미 바꾼거  
+      //this.props.id는 props로 받아온거
+    }
      
      
    
@@ -190,7 +198,11 @@ class Viewmemo extends React.Component {
     return (
         <div className="RichEditor-root">
         <button onClick={this.onDelete}>Delete</button>
-        <button onClick={this.onUpdate}>Update</button>
+        <input
+            type="button"
+            value="update"
+            onClick={this.onUpdate}
+          />
         <a>{this.props.date}</a>
         <div className={className}>
           <Editor

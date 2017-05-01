@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table,Button}  from 'react-bootstrap';
 import {Link} from 'react-router';
-import {ListGroupItem, ListGroup} from 'react-bootstrap';
+
 import './View.css';
 import Viewmemo from '../components/Viewmemo';
 

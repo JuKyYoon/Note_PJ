@@ -18,6 +18,7 @@ const Header = (props, context) => {
             <div className="logo">
                 Noote
             </div>
+            
             <div className="menu">
                 <MenuItem to={'/'} active={router.isActive('/', true)}>HOME</MenuItem>
                 <MenuItem to={'/search'} active={router.isActive('/search')}>Search</MenuItem>
@@ -25,6 +26,7 @@ const Header = (props, context) => {
                 <MenuItem to={'/setting'} active={router.isActive('/setting')}>Setting</MenuItem>
                 <MenuItem to={'/calender'} active={router.isActive('/calender')}>Calender</MenuItem>
                 <Clock/>
+                
             </div>
         </div>
     );

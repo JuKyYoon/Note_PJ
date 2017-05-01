@@ -64,6 +64,17 @@ app.post('/', (req, res) => {
     });
 });
 
+app.post('/:id/update', (req, res) => {
+    Memo.findById(req.params.id, (err, doc) => {
+        doc.body = req.body.body;
+        doc.date = formattedDate();
+        doc.save((err, doc) => {
+            if (err) console.log(err);
+            res.redirect('/');
+        });
+    });
+});
+
 
 app.post('/:id/delete', (req, res) => {
     console.log('#######################');
