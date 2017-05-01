@@ -1,6 +1,8 @@
 # 2017 Note App
 2학년 2016003727 윤주경
-
+## Start
+1. npm run build
+2. .\node_modules\.bin\electron .
 ## Header
 * React Router로 구현한 메뉴 이동
 * 시간 보기 가능
