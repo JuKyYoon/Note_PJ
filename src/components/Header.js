@@ -19,15 +19,23 @@ const Header = (props, context) => {
                 Noote
             </div>
             
-            <div className="menu">
-                <MenuItem to={'/'} active={router.isActive('/', true)}>HOME</MenuItem>
-                <MenuItem to={'/search'} active={router.isActive('/search')}>Search</MenuItem>
-                <MenuItem to={'/view'} active={router.isActive('/view')}>View</MenuItem>
-                <MenuItem to={'/setting'} active={router.isActive('/setting')}>Setting</MenuItem>
-                <MenuItem to={'/calender'} active={router.isActive('/calender')}>Calender</MenuItem>
-                <Clock/>
+            
+            <div className="menuvar">
+                <div className="menu">
+                    <MenuItem to={'/'} active={router.isActive('/', true)}>HOME</MenuItem>
+                    <MenuItem to={'/search'} active={router.isActive('/search')}>Search</MenuItem>
+                    <MenuItem to={'/view'} active={router.isActive('/view')}>View</MenuItem>
+                    <MenuItem to={'/setting'} active={router.isActive('/setting')}>Timer</MenuItem>
+                    <MenuItem to={'/calender'} active={router.isActive('/calender')}>Calender</MenuItem>
+                    
+                </div>
+                
                 
             </div>
+            <div className="clock">
+                <Clock/>
+            </div>
+            
         </div>
     );
 };

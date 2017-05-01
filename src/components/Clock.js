@@ -25,7 +25,7 @@ class Clockview extends React.Component {
   render() {
     return (
       <a>
-        It is {this.state.date.toLocaleTimeString()}
+        {this.state.date.toLocaleTimeString()}
       </a>
     );
   }

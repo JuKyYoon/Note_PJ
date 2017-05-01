@@ -1,0 +1,15 @@
+.searchview{
+	margin-left: 40px;
+	margin-right: 40px;
+
+}
+
+.input{
+	
+	height:33px;
+}
+
+.submit{
+	text-align: center;
+	font-size:20px;
+}

@@ -35,7 +35,7 @@ class Viewnote extends React.Component{
             
         }
         else{
-            return(<div>암것도 없어요 ㅠㅠ</div>);  
+            return(<div>No Note</div>);  
         } 
     }
 }
@@ -52,7 +52,6 @@ class Searchnote extends React.Component{
           async: false,
           success : (data) => {
               this.props.memos = data;
-              
            }
         });
 
@@ -65,18 +64,18 @@ class Searchnote extends React.Component{
           
         }
       };
-
-      
+   
     }
         
     render(){
       return (
-        <div>
-          <input type="text" ref="myInput" />
+        <div className="searchview">
+          <input type="text" ref="myInput" className="input"/>
           <input
             type="button"
-            value="Alert the text input"
+            value="Search"
             onClick={this.handleClick}
+            className="submit"
           />
           {this.state.sample}
         </div>

@@ -198,11 +198,6 @@ class Viewmemo extends React.Component {
     return (
         <div className="RichEditor-root">
         <button onClick={this.onDelete}>Delete</button>
-        <input
-            type="button"
-            value="update"
-            onClick={this.onUpdate}
-          />
         <a>{this.props.date}</a>
         <div className={className}>
           <Editor

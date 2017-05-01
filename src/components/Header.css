@@ -1,42 +1,49 @@
 .logo {
     height: 200px;
-    width: auto;
-    background-color: #ff3a34;
+
+    background-image: url("https://raw.githubusercontent.com/JuKyYoon/Note_PJ/master/src/assets/header-bg.jpg");
     /*width: 100vw;*/
     line-height: 3.5rem;
     color: black;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
-    /*padding: 50px;*/
     
+    /*padding: 50px;*/
+
 }
 
+.clock {
+    margin-left:40px;
+    margin-right:40px;
+    background-color:#91bfa7; 
+    text-align: center;
+    font-size:15px;
+}
 .menu {
-    background-color: #ff3a34;
-    width: auto;
-    float : center;
+    background-color: #91bfa7;
+    margin-left:40px;
+    margin-right:40px;
     height: 3.5rem;
 }
 
 .menu-item {
     display: inline-block;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 3.5rem;
-    width: 10%;
+    width: 20%;
     text-align: center;
     cursor: pointer;
-    background-color: #c40701;
     transition: background-color 0.3s;
     text-decoration: none;
 }
 
 .menu-item:hover {
-    background-color: #772727;
+    background-color: #66c8cb;
 }
 
 .menu-item:active, .menu-item.active {
-    background-color: #581309;
+    background-color: #66c8cb;
     color:gray;
 }

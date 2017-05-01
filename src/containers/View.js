@@ -31,7 +31,13 @@ class Viewnote extends React.Component{
                 <div>
                     <ul>
                         {this.props.memos.map((memo) => {
-                            return (<Viewmemo load={memo.body} date={memo.date} id = {memo._id}/>);
+                            return (
+                                <div>
+
+                                    <Viewmemo load={memo.body} date={memo.date} id = {memo._id}/>
+
+                                </div>
+                                );
                         })}
                     </ul>
                 </div>
@@ -39,7 +45,7 @@ class Viewnote extends React.Component{
             
         }
         else{
-            return(<div>암것도 없어요 ㅠㅠ</div>);  
+            return(<div className="not">Please Write and Save a note</div>);  
         } 
     }
 }
@@ -59,9 +65,9 @@ class Memo extends React.Component{
 const View = ({children}) => {
     return (
         <div className="viewpage">
-            <h1>hello</h1>
+            
             <Viewnote/>
-            <h2>goodbye</h2>
+            
         </div>
     );
 };

@@ -1,49 +1,80 @@
 import React from 'react';
-import {ListGroupItem, ListGroup} from 'react-bootstrap';
-import {Button,Panel} from 'react-bootstrap';
 import './Setting.css';
-function alertClicked() {
-  alert('You clicked the third ListGroupItem');
-}
-class Example extends React.Component {
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      open: true
-    };
-  }
 
+
+
+const StopwatchTicker = React.createClass({
+  render() {
+    let degStyle = {
+      transform: `rotate(${this.props.deg}deg)`
+    };
+    return (
+      <div className="tick-wrapper" style={degStyle}>
+        <div className="tick"></div>
+      </div>    
+    );
+  }
+});
+
+const Stopwatch = React.createClass({
+  getInitialState() {
+    return {
+      second: 61,
+      deg: 0
+    };
+  },
+  componentDidMount: function () {
+    this.onTimer();
+    this.onTick();
+  },
+  onTimer() {
+    if (this.state.second !== 0) {
+      this.setState({
+        second: this.state.second - 1
+      }, () => { window.setTimeout(this.onTimer, 1000) });  
+    } else {
+       this.setState({
+        second: 61
+      });
+    }
+  },
+  onTick() {
+    if (this.state.deg !== 360) {
+      this.setState({
+        deg: this.state.deg + 1.5 / 4
+      }, () => { window.setTimeout(this.onTick, 125 / 2 ) });
+    } else {
+       this.setState({
+        deg: 0
+      });
+    }
+  },
+  onClickHandler() {
+    this.setState({
+      second: 60,
+      deg: 0
+    });
+    if (this.state.deg === 0) {
+      this.onTimer();
+      this.onTick();
+    }
+  },
   render() {
     return (
-      <div>
-        <Button onClick={ ()=> this.setState({ open: !this.state.open })}>
-          click
-        </Button>
-        <Panel collapsible expanded={this.state.open}>
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-          Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </Panel>
+      <div className="stopwatch" onClick={ this.onClickHandler }>
+        <div className="second">{ this.state.second }</div>
+        <StopwatchTicker deg={this.state.deg}/>
       </div>
     );
   }
-}
+});
+
+
 
 const Setting = () => {
     return (
-        <div className="SettingPage">
-            <div className="SideMenuSetting">
-                <ListGroup>
-                  <ListGroupItem header="Setting" href="#link1">Link 1</ListGroupItem>
-                  <ListGroupItem header="ex1" href="#link2">Link 2</ListGroupItem>
-                  <ListGroupItem header="ex2" onClick={alertClicked}>
-                    Trigger an alert
-                  </ListGroupItem>
-                </ListGroup>
-            </div>
-
-            <div className="settingspace">
-                <Example/>
-            </div>
+        <div className="WeatherPage">
+           <Stopwatch />
         </div>
     );
 };
