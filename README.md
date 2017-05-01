@@ -1,4 +1,4 @@
-# 2017 Note App
+### React + Node.js + MongoDB
 2학년 2016003727 윤주경
 ## Start
 1. npm run build
