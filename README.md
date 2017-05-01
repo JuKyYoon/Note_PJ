@@ -6,14 +6,21 @@
 -Home
 ![home](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Home.PNG)
 
--Account
- Not yet
-
--Setting
- Not yet
+-Search
+![search](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Search.PNG)
+ 
 
 -View
- Not yet
+![view](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/View.PNG)
+
+
+-Timer
+![timer](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Timer.PNG)
+
+-Calender
+![calender](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Calender.PNG)
+
+
 
 
 
