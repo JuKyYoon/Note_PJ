@@ -17,7 +17,7 @@ class Viewnote extends React.Component{
             async: false,
             success : (data) => {
                 this.props.memos = data;
-                // console.log('success --> data :', this.props.memos);
+                console.log('success --> data :', this.props.memos);
                 //[Object, Object]
                 // console.log(typeof(data)); 
                 // = object
@@ -31,7 +31,7 @@ class Viewnote extends React.Component{
                 <div>
                     <ul>
                         {this.props.memos.map((memo) => {
-                            return (<Viewmemo load={memo.body} />);
+                            return (<Viewmemo load={memo.body} date={memo.date}/>);
                         })}
                     </ul>
                 </div>

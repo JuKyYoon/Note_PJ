@@ -189,11 +189,12 @@ class Viewmemo extends React.Component {
               className += ' RichEditor-hidePlaceholder';
             }
           }
-
+       
     return (
         <div className="RichEditor-root">
         <button onClick={this.onDelete}>Delete</button>
         <button onClick={this.onUpdate}>Update</button>
+        <a>{this.props.date}</a>
         <div className={className}>
           <Editor
             blockStyleFn={getBlockStyle}

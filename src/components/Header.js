@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import './Header.css';
-
+import Clock from './Clock.js';
 function movepage(){
     location.href = "/view"
 }
@@ -23,7 +23,8 @@ const Header = (props, context) => {
                 <MenuItem to={'/search'} active={router.isActive('/search')}>Search</MenuItem>
                 <MenuItem to={'/view'} active={router.isActive('/view')}>View</MenuItem>
                 <MenuItem to={'/setting'} active={router.isActive('/setting')}>Setting</MenuItem>
-                <MenuItem to={'/'} active={router.isActive('/exit')}>Exit</MenuItem>
+                <MenuItem to={'/calender'} active={router.isActive('/calender')}>Calender</MenuItem>
+                <Clock/>
             </div>
         </div>
     );

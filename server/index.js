@@ -22,11 +22,23 @@ var connection = mongoose.connection;
 
 autoIncrement.initialize(connection)
 
+function formattedDate() {
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var options = {year: undefined, month: undefined, day: undefined, hour: "2-digit", minute: "2-digit" };
+    var time = date.toLocaleTimeString("en-US",options);
+
+    return year + '년 ' + month + '월 ' + day + '일 ' + time;
+};
+
 var Schema = mongoose.Schema;
 // var ObjectId = mongoose.Schema.Types.ObjectId;
 var MemoSchema = new Schema({
     body      : String,
-    date      : {type: Date, default:Date.now}
+    date      : {type: String, default:formattedDate},
 });
 
 MemoSchema.plugin(autoIncrement.plugin, 'Memo');
