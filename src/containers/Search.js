@@ -32,11 +32,11 @@ class Viewnote extends React.Component{
                     </ul>
                 </div>
             );
-            
+
         }
         else{
-            return(<div>No Note</div>);  
-        } 
+            return(<div className = "nonote">No Note</div>);
+        }
     }
 }
 
@@ -60,24 +60,28 @@ class Searchnote extends React.Component{
           var input = this.refs.myInput;
           var inputValue = input.value;
           console.log('inputValue in handleClick : ',inputValue);
-          this.setState({sample : <Viewnote keyvalue={inputValue} memos={this.props.memos}/>}); 
-          
+          this.setState({sample : <Viewnote keyvalue={inputValue} memos={this.props.memos}/>});
+
         }
       };
-   
+
     }
-        
+
     render(){
       return (
-        <div className="searchview">
-          <input type="text" ref="myInput" className="input"/>
-          <input
-            type="button"
-            value="Search"
-            onClick={this.handleClick}
-            className="submit"
-          />
-          {this.state.sample}
+          <div className = "searchview">
+            <div className="TopSide">
+                <div className="form-style-6">
+                    <form>
+                        <input type="text" ref="myInput" className="input"/>
+                        <input type="button" value="Search" onClick={this.handleClick} className="submit"/>
+                    </form>
+                </div>
+            </div>
+
+            <div className="RightSide">
+              {this.state.sample}
+            </div>
         </div>
       );
     }
