@@ -3,31 +3,20 @@ import {ListGroupItem, ListGroup} from 'react-bootstrap';
 import {FormGroup,FormControl,ControlLabel,Button,Radio,Checkbox,HelpBlock} from 'react-bootstrap';
 import './Search.css';
 import Viewmemo from '../components/Viewmemo';
-
 var $ = require('jquery');
-function alertClicked() {
-  alert('You clicked the third ListGroupItem');
-}
 
-function helloworld(){
-  return(<div>fuck</div>);
-}
+
 class Viewnote extends React.Component{
     render(){
-        // console.log(this.props.keyvalue);
-        // console.log(this.props.memos);
         if(this.props.memos != null){
             return(
                 <div>
                     <ul>
                         {this.props.memos.map((memo) => {
                             var memojson = JSON.parse(memo.body);
-                            // console.log(memojson.blocks[0].text, 'vs' ,this.props.key);
-                            // console.log('index value : ',memojson.blocks[0].text.indexOf(this.props.keyvalue));
                             if(memojson.blocks[0].text.indexOf(this.props.keyvalue) != -1){
                               return (<Viewmemo load={memo.body} date={memo.date} id = {memo._id} />);
                             }
-
                         })}
                     </ul>
                 </div>
@@ -78,7 +67,6 @@ class Searchnote extends React.Component{
                     </form>
                 </div>
             </div>
-
             <div className="RightSide">
               {this.state.sample}
             </div>
