@@ -13,7 +13,7 @@
     "electron": "^1.6.6",
     "express": "^4.15.2",
     "express-react-views": "^0.10.2",
-    "mongoose": "^4.9.4",
+    "mongoose": "^6.7.1",
     "mongoose-auto-increment": "^5.0.1",
     "pug": "^2.0.0-beta11",
     "react": "^15.4.2",

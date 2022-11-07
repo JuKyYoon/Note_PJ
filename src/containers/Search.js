@@ -2,7 +2,7 @@ import React from 'react';
 import {ListGroupItem, ListGroup} from 'react-bootstrap';
 import {FormGroup,FormControl,ControlLabel,Button,Radio,Checkbox,HelpBlock} from 'react-bootstrap';
 import './Search.css';
-import Viewmemo from '../components/Viewmemo';
+import Viewmemo from '../components/ViewMemo';
 var $ = require('jquery');
 
 

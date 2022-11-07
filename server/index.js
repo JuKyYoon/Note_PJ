@@ -1,6 +1,4 @@
-//서버 index
-//JKY
-//1234
+
 const path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
@@ -8,23 +6,19 @@ var bodyParser = require('body-parser'); //JSON형태로 변환
 var autoIncrement = require("mongoose-auto-increment");
 var app = express();
 var db = mongoose.connection;
-db.on('error', console.error);
-db.once('open', function(){
-    // CONNECTED TO MONGODB SERVER
-    console.log("Connected to mongod server");
-});
 
-
+/**
+ * MongoDB 연결
+ */
 mongoose.Promise = global.Promise;
-//DB
-mongoose.connect('mongodb://JKY:1234@ds159200.mlab.com:59200/noote');
-var connection = mongoose.connection;
-
-autoIncrement.initialize(connection)
+mongoose
+    .connect('mongodb://localhost:27017/noote')
+    .then(() => console.log('Successfully connected to mongodb'))
+    .catch(e => console.error(e));
+autoIncrement.initialize(db)
 
 function formattedDate() {
     var date = new Date();
-
     var day = date.getDate();
     var month = date.getMonth() + 1;
     var year = date.getFullYear();
@@ -34,8 +28,10 @@ function formattedDate() {
     return year + '년 ' + month + '월 ' + day + '일 ' + time;
 };
 
+/**
+ * 스키마 설정
+ */
 var Schema = mongoose.Schema;
-// var ObjectId = mongoose.Schema.Types.ObjectId;
 var MemoSchema = new Schema({
     body      : String,
     date      : {type: String, default:formattedDate},
@@ -44,6 +40,16 @@ var MemoSchema = new Schema({
 MemoSchema.plugin(autoIncrement.plugin, 'Memo');
 var Memo = mongoose.model('Memo', MemoSchema);
 
+
+/**
+ * API 작성
+ */
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+/**
+ * 메모 보여주기
+ */
 app.post('/view', function(req,res){
     Memo.find(function(err, memos){
         if(err) {return res.status(500).send({error: 'database failure'});}
@@ -51,10 +57,9 @@ app.post('/view', function(req,res){
     })
 });
 
-app.use(bodyParser.urlencoded({ extended: false }))
-
-
-
+/**
+ * 메모 저장
+ */
 app.post('/', (req, res) => {
     var newMemo = new Memo();
     newMemo.body = req.body.body;
@@ -64,6 +69,9 @@ app.post('/', (req, res) => {
     });
 });
 
+/**
+ * 메모 수정
+ */
 app.post('/:id/update', (req, res) => {
     Memo.findById(req.params.id, (err, doc) => {
         doc.body = req.body.body;
@@ -75,9 +83,10 @@ app.post('/:id/update', (req, res) => {
     });
 });
 
-
+/**
+ * 메모 삭제
+ */
 app.post('/:id/delete', (req, res) => {
-    console.log('#######################');
     Memo.remove({'_id': req.params.id}, (err, output) => {
         if(err) return res.status(500).json({ error: "database failure" });
         res.redirect('/');
@@ -94,6 +103,9 @@ app.get('*', (req, res, next) => {
     res.sendFile(path.resolve(__dirname, '../build/index.html'));
 });
 
+/**
+ * 서버 On
+ */
 app.listen(4000, function () {
-  console.log('AAAAAAAAAAAAAAAAAAAA');
+  console.log('Server on Port 4000');
 });

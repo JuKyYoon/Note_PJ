@@ -3,7 +3,7 @@ import {Table,Button}  from 'react-bootstrap';
 import {Link} from 'react-router';
 
 import './View.css';
-import Viewmemo from '../components/Viewmemo';
+import Viewmemo from '../components/ViewMemo';
 
 
 var $ = require('jquery');
