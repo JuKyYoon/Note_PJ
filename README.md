@@ -1,13 +1,32 @@
-### React + Node.js + MongoDB
-2학년 2016003727 윤주경
+# Web Note App
+
+## FrontEnd
+![react](https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=black)
+![jquery](https://img.shields.io/badge/jquery-0769AD?style=flat-square&logo=jquery&logoColor=white)
+![bootstrap](https://img.shields.io/badge/bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+
+## Backend
+![nodejs](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=Node.js&logoColor=white)
+![express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=Express&logoColor=white)
+
+
+## Database
+![mongodb](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=MongoDB&logoColor=white)
+
 ## Start
-  npm run build
-  .\node_modules\.bin\electron .
-## Header
+```npm install```
+
+```npm run build ```
+
+```node server/index.js```
+
+
+## Features
+### Header
 * React Router로 구현한 메뉴 이동
 * 시간 보기 가능
 
-## Home
+### Home
 * draft.js를 사용한 에디터 구현
 * H1,H2 ... H6을 이용한 글자 크기 조정 기능
 * Blockquote 기능
@@ -19,34 +38,16 @@
 * 단축키 기능 (CTRL+B, CTRL+U ......)
 
 
-## Search
+### Search
 * 입력한 텍스트가 포함되어 있는 노트를 보여줌
 
-## View
+### View
 * 지금까지 작성한 모든 노트 파일 볼 수 있고 draft.js로 작성한 그대로 볼 수 있는 기능
 * 삭제 기능 : 삭제 버튼 누르면 페이지가 리로딩 되면서 삭제 가능
 * 시간순 정렬
 
-## Timer
+### Timer
 *  60초 타이머 기능
 
-## Calender
+### Calender
 * 달력 기능
-
-## Image
--Home
-![home](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Home.PNG)
-
--Search
-![search](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Search.PNG)
-
-
--View
-![view](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/View.PNG)
-
-
--Timer
-![timer](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Timer.PNG)
-
--Calender
-![calender](https://github.com/JuKyYoon/Note_PJ/blob/master/example_image/Calender.PNG)

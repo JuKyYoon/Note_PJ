@@ -5,26 +5,19 @@ var bodyParser = require('body-parser'); //JSON형태로 변환
 var autoIncrement = require("mongoose-auto-increment");
 var noteapp = express();
 var db = mongoose.connection;
-//서버 index
-//JKY
-//1234
-db.on('error', console.error);
-db.once('open', function(){
-    // CONNECTED TO MONGODB SERVER
-    console.log("Connected to mongod server");
-});
 
-
-mongoose.Promise = global.Promise;
-//DB
-mongoose.connect('mongodb://JKY:1234@ds159200.mlab.com:59200/noote');
-var connection = mongoose.connection;
-
-autoIncrement.initialize(connection)
-
+/**
+ * MongoDB 연결
+ */
+ mongoose.Promise = global.Promise;
+ mongoose
+     .connect('mongodb://localhost:27017/noote')
+     .then(() => console.log('Successfully connected to mongodb'))
+     .catch(e => console.error(e));
+ autoIncrement.initialize(db)
+ 
 function formattedDate() {
     var date = new Date();
-
     var day = date.getDate();
     var month = date.getMonth() + 1;
     var year = date.getFullYear();
@@ -34,16 +27,26 @@ function formattedDate() {
     return year + '년 ' + month + '월 ' + day + '일 ' + time;
 };
 
-var Schema = mongoose.Schema;
-// var ObjectId = mongoose.Schema.Types.ObjectId;
-var MemoSchema = new Schema({
-    body      : String,
-    date      : {type: String, default:formattedDate},
-});
+/**
+ * 스키마 설정
+ */
+ var Schema = mongoose.Schema;
+ var MemoSchema = new Schema({
+     body      : String,
+     date      : {type: String, default:formattedDate},
+ });
 
 MemoSchema.plugin(autoIncrement.plugin, 'Memo');
 var Memo = mongoose.model('Memo', MemoSchema);
+ 
+/**
+ * API 작성
+ */
+noteapp.use(bodyParser.urlencoded({ extended: false }))
 
+/**
+ * 메모 보여주기
+ */
 noteapp.post('/view', function(req,res){
     Memo.find(function(err, memos){
         if(err) {return res.status(500).send({error: 'database failure'});}
@@ -51,10 +54,9 @@ noteapp.post('/view', function(req,res){
     })
 });
 
-noteapp.use(bodyParser.urlencoded({ extended: false }))
-
-
-
+/**
+ * 메모 저장
+ */
 noteapp.post('/', (req, res) => {
     var newMemo = new Memo();
     newMemo.body = req.body.body;
@@ -64,6 +66,9 @@ noteapp.post('/', (req, res) => {
     });
 });
 
+/**
+ * 메모 수정
+ */
 noteapp.post('/:id/update', (req, res) => {
     Memo.findById(req.params.id, (err, doc) => {
         doc.body = req.body.body;
@@ -75,7 +80,9 @@ noteapp.post('/:id/update', (req, res) => {
     });
 });
 
-
+/**
+ * 메모 삭제
+ */
 noteapp.post('/:id/delete', (req, res) => {
     console.log('#######################');
     Memo.remove({'_id': req.params.id}, (err, output) => {
@@ -100,7 +107,6 @@ noteapp.listen(4000, function () {
 
 
 const {app, BrowserWindow} = require('electron')
-// const path = require('path')
 const url = require('url')
 
 // 윈도우 객체를 전역에 유지합니다. 만약 이렇게 하지 않으면
