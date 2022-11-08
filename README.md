@@ -23,10 +23,14 @@
 
 ## Features
 ### Header
+![image](https://user-images.githubusercontent.com/22341159/200460661-6848855a-0633-40cb-9a8c-b0991241f76b.png)
+
 * React Router로 구현한 메뉴 이동
-* 시간 보기 가능
+* 현재 시각 표시
 
 ### Home
+![image](https://user-images.githubusercontent.com/22341159/200460804-97d56fe1-d486-4bf8-99dd-0ba9bb78f044.png)
+
 * draft.js를 사용한 에디터 구현
 * H1,H2 ... H6을 이용한 글자 크기 조정 기능
 * Blockquote 기능
@@ -39,15 +43,22 @@
 
 
 ### Search
+![image](https://user-images.githubusercontent.com/22341159/200460851-74e83713-a60d-4d93-89a1-4bf4540421ca.png)
+
 * 입력한 텍스트가 포함되어 있는 노트를 보여줌
 
 ### View
+![image](https://user-images.githubusercontent.com/22341159/200460885-32800a87-ed6f-4428-9533-cbec6acb6e04.png)
+
 * 지금까지 작성한 모든 노트 파일 볼 수 있고 draft.js로 작성한 그대로 볼 수 있는 기능
 * 삭제 기능 : 삭제 버튼 누르면 페이지가 리로딩 되면서 삭제 가능
 * 시간순 정렬
 
 ### Timer
+![image](https://user-images.githubusercontent.com/22341159/200460928-cf8680db-b138-477c-830c-883cb40a6d23.png)
+
 *  60초 타이머 기능
 
 ### Calender
+![image](https://user-images.githubusercontent.com/22341159/200460982-9cd1ddec-fd29-49e0-ac2b-c064548cec91.png)
 * 달력 기능
